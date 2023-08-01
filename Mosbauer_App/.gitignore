@@ -1,0 +1,4 @@
+# ignore dataset
+data/
+media/
+__pycache__/
