@@ -9,6 +9,8 @@ import tensorflow as tf
 import numpy as np
 import os
 
+from .utils import get_plot
+
 
 class CustomFileSystemStorage(FileSystemStorage):
     def get_available_name(self, name, max_length=None):
@@ -32,7 +34,12 @@ def index(request):
         path = str(settings.MEDIA_ROOT) + "/" + spectrum.name
         # read the spectrum
         spec_ = -np.loadtxt(path, dtype=float)[:, 1] / 10
+        spec_graph = - spec_
         spec_ = spec_.tolist()
+
+        y = spec_graph
+        x = np.linspace(0, 511)
+        chart = get_plot(x, y)
 
         spectrum_pred = [spec_]
         categ = ["Otro", "Hematita", "Magnetita"]
@@ -48,7 +55,8 @@ def index(request):
             {
                 "message": message,
                 "spectrum": spectrum_pred,
-                "prediction": prediction
+                "prediction": prediction,
+                "chart": chart
             }
         )
     except MultiValueDictKeyError:

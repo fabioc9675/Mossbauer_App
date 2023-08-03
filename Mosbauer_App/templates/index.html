@@ -27,13 +27,22 @@
     </form>
 
     <div class="wrapper">
-
         <div class="info_container">
             <ul>
                 <li>Prediction: <span class="name">{{ prediction }}</span></li>
             </ul>
         </div>
     </div>
+
+    <div class="wrapper">
+        <div class="info_container">
+            {% if chart %}
+            <img src="data:image/png;base64, {{chart|safe}}" />
+            {% endif %}
+        </div>
+    </div>
+
+
 
     <div class="header">
         <h4><span>Tensored </span>Django</h4>
