@@ -37,7 +37,9 @@ def index(request):
         spec_graph = - spec_
         spec_ = spec_.tolist()
 
-
+        y = spec_graph
+        x = np.linspace(0, 511)
+        chart = get_plot(x, y)
 
         spectrum_pred = [spec_]
         categ = ["Otro", "Hematita", "Magnetita"]
@@ -53,7 +55,8 @@ def index(request):
             {
                 "message": message,
                 "spectrum": spectrum_pred,
-                "prediction": prediction
+                "prediction": prediction,
+                "chart": chart
             }
         )
     except MultiValueDictKeyError:
