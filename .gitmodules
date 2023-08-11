@@ -1,0 +1,3 @@
+[submodule "iawebmossbauer"]
+	path = iawebmossbauer
+	url = https://github.com/UDEAMOSSBAUER/iawebmossbauer.git
